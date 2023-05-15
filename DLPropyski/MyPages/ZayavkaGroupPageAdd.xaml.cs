@@ -140,7 +140,7 @@ namespace DLPropyski.MyPages
                 DateTime date2 = (DateTime)StopDate.SelectedDate;
                 if (StartDate.SelectedDate == StopDate.SelectedDate || date > date2)
                 {
-                    MessageBox.Show("Дата окончания должна быть позже и отличаться от даты начала действия пропуска", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Дата окончания должна быть позже даты начала действия пропуска и отличаться от нее", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
                     StopDate.SelectedDate = null;
                 }
             }
@@ -275,8 +275,8 @@ namespace DLPropyski.MyPages
                     Connect.db.SaveChanges();
                     Client client3 = clients[i];
                     Client client2 = Connect.db.Client.Where(x => x.FName == client3.FName && x.LName == client3.LName &&
-               x.Name == client3.Name && x.Mail == client3.Mail && x.PassportNumber == client3.PassportNumber && x.PassportSeries == client3.PassportSeries
-               && x.Phone == client3.Phone && x.Primechanie == client3.Primechanie && x.DateBirthfay == client3.DateBirthfay).FirstOrDefault();
+                     x.Name == client3.Name && x.Mail == client3.Mail && x.PassportNumber == client3.PassportNumber && x.PassportSeries == client3.PassportSeries
+                     && x.Phone == client3.Phone && x.Primechanie == client3.Primechanie && x.DateBirthfay == client3.DateBirthfay).FirstOrDefault();
 
                     ZayavkaClient zayClient = new ZayavkaClient();
                     zayClient.ClientID = client2.id;
