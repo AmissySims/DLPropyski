@@ -105,19 +105,19 @@
                             </Border>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" Margin="0,0,0,5">
-                            <TextBlock Margin="0,0,5,0">Дата рождения:</TextBlock>
+                            <TextBlock Margin="0,0,5,0">Дата рождения*:</TextBlock>
                             <Border BorderBrush="#FFABADB3" BorderThickness="3"  CornerRadius="5">
                                 <DatePicker x:Name="DPDateBirthday" SelectedDateChanged="DPDateBirthday_SelectedDateChanged" Width="180" Margin="-1"></DatePicker>
                             </Border>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" Margin="0,0,0,5">
-                            <TextBlock Margin="0,0,5,0">Серия:</TextBlock>
+                            <TextBlock Margin="0,0,5,0">Серия паспорта:</TextBlock>
                             <Border BorderBrush="#FFABADB3" BorderThickness="3"  CornerRadius="5">
                                 <TextBox Width="180" MaxLength="4" PreviewTextInput="TbPassportSeriya_PreviewTextInput" TextChanged="TbPassportSeriya_TextChanged" Name="TbPassportSeriya" Margin="-1"></TextBox>
                             </Border>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right">
-                            <TextBlock Margin="0,0,5,0">Номер:</TextBlock>
+                            <TextBlock Margin="0,0,5,0">Номер паспорта:</TextBlock>
                             <Border BorderBrush="#FFABADB3" BorderThickness="3"  CornerRadius="5">
                                 <TextBox Width="180" MaxLength="6" PreviewTextInput="TbPassportNumber_PreviewTextInput" TextChanged="TbPassportNumber_TextChanged" Name="TbPassportNumber" Margin="-1"></TextBox>
                             </Border>
