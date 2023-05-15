@@ -42,7 +42,7 @@ namespace DLPropyski.DBConnect
             get
             {
 
-                List<ZayavkaClient> cl = DBConnect.ConnectClass.db.ZayavkaClient.Where(x => x.ZayavkaID == id).ToList();
+                List<ZayavkaClient> cl = ConnectClass.db.ZayavkaClient.Where(x => x.ZayavkaID == id).ToList();
                 return cl.Count;
             }
         }
@@ -51,13 +51,17 @@ namespace DLPropyski.DBConnect
         {
             get
             {
-                if(StatusID == 3)
+                    if (StatusID == 3)
+                    {
+                        return ("статус вашей заявки - " + Status.Name + ". Причина: " + ResultBecouse);
+
+                    }
+                else
                 {
-                    return ("статус вашей заявки - " + Status.Name +". Причина: " +ResultBecouse);
+                        return ("статус вашей заявки - " + Status.Name);
 
                 }
-                else
-                return ("статус вашей заявки - " + Status.Name);
+                       
             }
         }
 
