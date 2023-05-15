@@ -71,7 +71,7 @@ namespace DLPropyski.DBConnect
         {
             get
             {
-                if(Classess.UserClass.AuthUser.IsAdmin == true && (StatusID == 1 || StatusID == 2))
+                if(StatusID == 1 || StatusID == 2)
                 {
                     return Visibility.Visible;
                 }

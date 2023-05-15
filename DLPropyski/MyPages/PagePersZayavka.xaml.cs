@@ -1,4 +1,5 @@
-﻿using DLPropyski.DBConnect;
+﻿using DLPropyski.Classess;
+using DLPropyski.DBConnect;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using DLPropyski.Classess;
 
 namespace DLPropyski.MyPages
 {
@@ -36,7 +36,7 @@ namespace DLPropyski.MyPages
             CBPodrazdel.ItemsSource = Connect.db.Podrazdel.ToList();
             CBPodrazdel.DisplayMemberPath = "Name";
 
-           
+
 
         }
 
@@ -156,12 +156,12 @@ namespace DLPropyski.MyPages
                     zayavka.VisitID = visit.id;
                     zayavka.StatusID = 1;
                     zayavka.PodrazdelEmplID = employee.id;
-                    zayavka.UserID = Classess.UserClass.AuthUser.id;
+                    zayavka.UserID = UserClass.AuthUser.id;
 
                     Connect.db.Zayavka.Add(zayavka);
                     Connect.db.SaveChanges();
                     Zayavka zay = Connect.db.Zayavka.Where(x => x.DateStart == StartDate.SelectedDate && x.DateStop == StopDate.SelectedDate && x.PodrazdelEmplID == employee.id && x.StatusID == 1
-                    && x.TypeZayavkaID == 1 && x.VisitID == visit.id && x.UserID == (Classess.UserClass.AuthUser.id)).FirstOrDefault();
+                    && x.TypeZayavkaID == 1 && x.VisitID == visit.id && x.UserID == (UserClass.AuthUser.id)).FirstOrDefault();
 
                     client.FName = TbFamiliya.Text.Trim();
                     client.LName = TbOtchestvo.Text.Trim();
