@@ -24,5 +24,10 @@ namespace DLPropyski.MyPages
             NavigationService.Navigate(new ListGroupZayavkaPage());
 
         }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
