@@ -24,7 +24,7 @@ namespace DLPropyski.MyPages
         public ZayavkaGroupPageAdd()
         {
             InitializeComponent();
-            MessageBox.Show("Заявка может быть оформлена только при кол-ве участников от 5 человек и более.", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Заявка может быть оформлена только при кол-ве участников от 5 человек и больше", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             StopDate.IsEnabled = false;
 
             BtnAdd.IsEnabled = false;
@@ -267,7 +267,7 @@ namespace DLPropyski.MyPages
                 Connect.db.SaveChanges();
 
                 Zayavka zay = Connect.db.Zayavka.Where(x => x.DateStart == StartDate.SelectedDate && x.DateStop == StopDate.SelectedDate && x.PodrazdelEmplID == employee.id && x.StatusID == 1
-               && x.TypeZayavkaID == 2 && x.VisitID == visit.id && x.UserID == (Classess.UserClass.AuthUser.id)).FirstOrDefault();
+               && x.TypeZayavkaID == 2 && x.VisitID == visit.id && x.UserID == (UserClass.AuthUser.id)).FirstOrDefault();
 
                 for (int i = 0; i < clients.Count; i++)
                 {
