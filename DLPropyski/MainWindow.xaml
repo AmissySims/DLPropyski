@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DLPropyski"
         mc:Ignorable="d" 
-        Title="Пропуска" Height="550" Width="800">
+        Title="Заявки на пропуск" Height="550" Width="800"
+        Icon="\Images\30a78ad9-0dc1-484b-8988-5c607c47d3cc.jpg">
     <Grid>
         <Frame x:Name="MyFrames" NavigationUIVisibility="Hidden"></Frame>
     </Grid>

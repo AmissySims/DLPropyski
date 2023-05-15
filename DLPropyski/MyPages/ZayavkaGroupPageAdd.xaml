@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Margin="25,0,0,0">
             <Border BorderBrush="White" BorderThickness="2">
-                <Image Width="40" Height="40" Source="\Imagesss\30a78ad9-0dc1-484b-8988-5c607c47d3cc.jpg" Margin="0,0,0,0"></Image>
+                <Image Width="40" Height="40" Source="\Images\30a78ad9-0dc1-484b-8988-5c607c47d3cc.jpg" Margin="0,0,0,0"></Image>
             </Border>
             <Button Name="back" Click="back_Click">Назад</Button>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">Пропуски на посещение</TextBlock>

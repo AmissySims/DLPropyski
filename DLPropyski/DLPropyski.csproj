@@ -217,11 +217,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Imagesss\групп посещ.png" />
-    <Resource Include="Imagesss\личное посещ.png" />
+    <Resource Include="Images\групп посещ.png" />
+    <Resource Include="Images\личное посещ.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Imagesss\30a78ad9-0dc1-484b-8988-5c607c47d3cc.jpg" />
+    <Resource Include="Images\30a78ad9-0dc1-484b-8988-5c607c47d3cc.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

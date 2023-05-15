@@ -20,7 +20,7 @@
                 <StackPanel Width="150" Height="150" Margin="-1"  Background="#FFD9D9D9" >
                    
                     <Button x:Name="BtnPers"  Click="BtnPers_Click" BorderBrush="{x:Null}" Background="{x:Null}">
-                        <Image Source="\Imagesss\личное посещ.png" />
+                        <Image Source="\Images\личное посещ.png" />
                     </Button>
                 </StackPanel>
             </Border>
@@ -28,7 +28,7 @@
                 <StackPanel Width="150" Height="150" Margin="-1"  Background="#FFD9D9D9">
                    
                     <Button x:Name="BtnGroupp" Click="BtnGroupp_Click" BorderBrush="{x:Null}" Background="{x:Null}" >
-                        <Image Source="\Imagesss\групп посещ.png" Height="140" Width="140"/>
+                        <Image Source="\Images\групп посещ.png" Height="140" Width="140"/>
                     </Button>
                 </StackPanel>
             </Border>
