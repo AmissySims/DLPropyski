@@ -27,7 +27,12 @@ namespace DLPropyski.MyPages
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.GoBack();
+        }
 
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AuthPage());
         }
     }
 }
