@@ -18,6 +18,7 @@ namespace DLPropyski.MyPages
             InitializeComponent();
 
             Update();
+          
 
         }
 
@@ -49,7 +50,7 @@ namespace DLPropyski.MyPages
                     MessageBox.Show("Нет заявок на личное посещение", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
-
+           
 
         }
 

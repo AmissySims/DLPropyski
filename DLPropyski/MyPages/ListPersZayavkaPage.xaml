@@ -47,7 +47,17 @@
 
                                 </StackPanel>
                                 <StackPanel Grid.Column="1">
-                                    <TextBlock Text="{Binding StatusText}" TextWrapping="Wrap" Margin="0,0,0,5"></TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding StatusText}"  Margin="0,0,0,5"></TextBlock>
+                                        <!--<TextBlock Text="Статус заявки - "/>
+                                        <TextBlock Text="{Binding Status.Name}"  Margin="0,0,0,5"></TextBlock>
+                                        <StackPanel Orientation="Horizontal" x:Name="ResultSt" Visibility="Hidden" >
+                                            <TextBlock Text=" Причина -"/>
+                                            <TextBlock Text="{Binding ResultBecouse}" TextWrapping="Wrap" Margin="0,0,0,5"></TextBlock>
+                                        </StackPanel>-->
+                                       
+                                    </StackPanel>
+                                    
                                     <Border BorderBrush="#FFFF9619" BorderThickness="1"  Visibility="{Binding visibilityBtn}" Height="23" CornerRadius="5" Margin="0,0,20,5">
                                         <Button  BorderBrush="{x:Null}" Background="White" Visibility="{Binding visibilityBtn}" x:Name="BtnDelete" Click="BtnDelete_Click" >Отменить заявку</Button>
                                     </Border>

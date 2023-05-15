@@ -138,70 +138,78 @@ namespace DLPropyski.MyPages
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            string num = TbPhone.Text;
-            string email = TbMail.Text;
-            if (Regex.IsMatch(num, @"^((\+?7|8)[ -]?)?([(]?\d[- ]?[()]?[- ]?){10}$") && Regex.IsMatch(num, @"^(\+?7|8)?[\s(-]?[(-]?\d{3,4}[)-]?[ )-]?\d{2,7}[ -]?\d{2,4}[ -]?\d{0,2}$"))
+            try
             {
-
-                if (Regex.IsMatch(email, @"^[\w.-]+@\w+\.\w+$"))
+                string num = TbPhone.Text;
+                string email = TbMail.Text;
+                if (Regex.IsMatch(num, @"^((\+?7|8)[ -]?)?([(]?\d[- ]?[()]?[- ]?){10}$") && Regex.IsMatch(num, @"^(\+?7|8)?[\s(-]?[(-]?\d{3,4}[)-]?[ )-]?\d{2,7}[ -]?\d{2,4}[ -]?\d{0,2}$"))
                 {
-                    zayavka.DateStart = StartDate.SelectedDate;
-                    zayavka.DateStop = StopDate.SelectedDate;
 
-                    VisitPurpose visit = (VisitPurpose)CBPoseshenie.SelectedItem;
-                    Employee employee = (Employee)CBEmployes.SelectedItem;
-                    Podrazdel podrazdel = (Podrazdel)CBPodrazdel.SelectedItem;
+                    if (Regex.IsMatch(email, @"^[\w.-]+@\w+\.\w+$"))
+                    {
+                        zayavka.DateStart = StartDate.SelectedDate;
+                        zayavka.DateStop = StopDate.SelectedDate;
 
-                    zayavka.TypeZayavkaID = 1;
-                    zayavka.VisitID = visit.id;
-                    zayavka.StatusID = 1;
-                    zayavka.PodrazdelEmplID = employee.id;
-                    zayavka.UserID = UserClass.AuthUser.id;
+                        VisitPurpose visit = (VisitPurpose)CBPoseshenie.SelectedItem;
+                        Employee employee = (Employee)CBEmployes.SelectedItem;
+                        Podrazdel podrazdel = (Podrazdel)CBPodrazdel.SelectedItem;
 
-                    Connect.db.Zayavka.Add(zayavka);
-                    Connect.db.SaveChanges();
-                    Zayavka zay = Connect.db.Zayavka.Where(x => x.DateStart == StartDate.SelectedDate && x.DateStop == StopDate.SelectedDate && x.PodrazdelEmplID == employee.id && x.StatusID == 1
-                    && x.TypeZayavkaID == 1 && x.VisitID == visit.id && x.UserID == (UserClass.AuthUser.id)).FirstOrDefault();
+                        zayavka.TypeZayavkaID = 1;
+                        zayavka.VisitID = visit.id;
+                        zayavka.StatusID = 1;
+                        zayavka.PodrazdelEmplID = employee.id;
+                        zayavka.UserID = UserClass.AuthUser.id;
 
-                    client.FName = TbFamiliya.Text.Trim();
-                    client.LName = TbOtchestvo.Text.Trim();
-                    client.Name = TbName.Text.Trim();
-                    client.Mail = TbMail.Text.Trim();
-                    client.NameOrganizatciya = TbOrganizaciya.Text.Trim();
-                    client.Phone = TbPhone.Text.Trim();
-                    client.Primechanie = TbPrim.Text;
-                    client.DateBirthfay = DPDateBirthday.SelectedDate;
-                    client.PassportSeries = int.Parse(TbPassportSeriya.Text.Trim());
-                    client.PassportNumber = int.Parse(TbPassportNumber.Text.Trim());
+                        Connect.db.Zayavka.Add(zayavka);
+                        Connect.db.SaveChanges();
+                        Zayavka zay = Connect.db.Zayavka.Where(x => x.DateStart == StartDate.SelectedDate && x.DateStop == StopDate.SelectedDate && x.PodrazdelEmplID == employee.id && x.StatusID == 1
+                        && x.TypeZayavkaID == 1 && x.VisitID == visit.id && x.UserID == (UserClass.AuthUser.id)).FirstOrDefault();
 
-                    Connect.db.Client.Add(client);
-                    Connect.db.SaveChanges();
+                        client.FName = TbFamiliya.Text.Trim();
+                        client.LName = TbOtchestvo.Text.Trim();
+                        client.Name = TbName.Text.Trim();
+                        client.Mail = TbMail.Text.Trim();
+                        client.NameOrganizatciya = TbOrganizaciya.Text.Trim();
+                        client.Phone = TbPhone.Text.Trim();
+                        client.Primechanie = TbPrim.Text;
+                        client.DateBirthfay = DPDateBirthday.SelectedDate;
+                        client.PassportSeries = int.Parse(TbPassportSeriya.Text.Trim());
+                        client.PassportNumber = int.Parse(TbPassportNumber.Text.Trim());
+
+                        Connect.db.Client.Add(client);
+                        Connect.db.SaveChanges();
 
 
-                    Client clientt = Connect.db.Client.Where(x => x.FName == TbFamiliya.Text.Trim() && x.LName == TbOtchestvo.Text.Trim() &&
-                    x.Name == TbName.Text.Trim() && x.Mail == TbMail.Text.Trim() && x.PassportNumber == client.PassportNumber && x.PassportSeries == client.PassportSeries
-                    && x.Phone == TbPhone.Text && x.Primechanie == TbPrim.Text && x.DateBirthfay == DPDateBirthday.SelectedDate).FirstOrDefault();
+                        Client clientt = Connect.db.Client.Where(x => x.FName == TbFamiliya.Text.Trim() && x.LName == TbOtchestvo.Text.Trim() &&
+                        x.Name == TbName.Text.Trim() && x.Mail == TbMail.Text.Trim() && x.PassportNumber == client.PassportNumber && x.PassportSeries == client.PassportSeries
+                        && x.Phone == TbPhone.Text && x.Primechanie == TbPrim.Text && x.DateBirthfay == DPDateBirthday.SelectedDate).FirstOrDefault();
 
-                    ZayavkaClient zayClient = new ZayavkaClient();
-                    zayClient.ClientID = clientt.id;
-                    zayClient.ZayavkaID = zay.id;
+                        ZayavkaClient zayClient = new ZayavkaClient();
+                        zayClient.ClientID = clientt.id;
+                        zayClient.ZayavkaID = zay.id;
 
-                    Connect.db.ZayavkaClient.Add(zayClient);
+                        Connect.db.ZayavkaClient.Add(zayClient);
 
-                    Connect.db.SaveChanges();
+                        Connect.db.SaveChanges();
 
-                    MessageBox.Show("Заявка создана", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                    NavigationService.Navigate(new ListPersZayavkaPage());
+                        MessageBox.Show("Заявка создана", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                        NavigationService.Navigate(new ListPersZayavkaPage());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Электронная почта введена не верно", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Электронная почта введена не верно", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Номер введен не верно", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            else
+            catch
             {
-                MessageBox.Show("Номер введен не верно", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(" ");
             }
+          
         }
 
         private void CBPoseshenie_SelectionChanged(object sender, SelectionChangedEventArgs e)

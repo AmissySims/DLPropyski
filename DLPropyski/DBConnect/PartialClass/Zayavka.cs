@@ -52,18 +52,18 @@ namespace DLPropyski.DBConnect
         {
             get
             {
-                    if (StatusID == 1 || StatusID == 2 || StatusID == 4)
-                    {
+                if (StatusID == 1 || StatusID == 2 || StatusID == 4)
+                {
                     return ("Статус заявки - " + Status.Name);
-                   
 
-                    }
-                    else  
-                    {
-                         return ("Статус  заявки - " + Status.Name + ". Причина: " + ResultBecouse);
 
-                    }
-                        
+                }
+                else
+                {
+                    return ("Статус  заявки - " + Status.Name + ". Причина: " + ResultBecouse);
+
+                }
+
             }
         }
 
