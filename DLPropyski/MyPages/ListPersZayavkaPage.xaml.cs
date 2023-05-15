@@ -107,5 +107,10 @@ namespace DLPropyski.MyPages
         {
             NavigationService.Navigate(new PagePersZayavka());
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AuthPage());
+        }
     }
 }
