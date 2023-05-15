@@ -1,18 +1,9 @@
 ﻿using DLPropyski.DBConnect;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DLPropyski.MyPages
 {
@@ -21,14 +12,14 @@ namespace DLPropyski.MyPages
     /// </summary>
     public partial class ListGroupZayavka : Page
     {
-        bool isAdmines = (bool)DLPropyski.Classesss.UserClass.AuthUser.IsAdmin;
+        bool isAdmines = (bool)Classesss.UserClass.AuthUser.IsAdmin;
         public ListGroupZayavka()
         {
             InitializeComponent();
-            Up();
+            Update();
         }
 
-        void Up()
+        void Update()
         {
             if (isAdmines == false)
             {
@@ -40,13 +31,13 @@ namespace DLPropyski.MyPages
 
                 else
                 {
-            
-                    MessageBox.Show("У вас нет заявок на групповое посещение", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    MessageBox.Show("Нет заявок на групповое посещение", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             else
             {
-                List<Zayavka> zayavkasss = ConnectClass.db.Zayavka.Where(x => x.TypeZayavkaID == 1).ToList();
+                List<Zayavka> zayavkasss = ConnectClass.db.Zayavka.Where(x => x.TypeZayavkaID == 2).ToList();
                 if (zayavkasss.Count > 0)
                 {
                     ListZayavka.ItemsSource = zayavkasss;
@@ -61,11 +52,11 @@ namespace DLPropyski.MyPages
 
         }
 
- 
+
 
         private void LichZayav_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ListLichnZayavkaPage());
+            NavigationService.Navigate(new ListPersZayavkaPage());
         }
 
         private void AddGroupZayavka_Click(object sender, RoutedEventArgs e)
@@ -75,33 +66,33 @@ namespace DLPropyski.MyPages
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if(isAdmines == false)
+            if (isAdmines == false)
             {
-                if(MessageBox.Show("Вы уверены, что желаете отменить эту заявку? ","Уведомление",MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Вы уверены, что хотите отменить эту заявку? ", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Zayavka sel = (sender as Button).DataContext as Zayavka;
                     sel.StatusID = 4;
                     ConnectClass.db.SaveChanges();
-                    Up();
+                    Update();
 
                 }
             }
             else
             {
-                if (MessageBox.Show("Вы уверены, что желаете отменить эту заявку?", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Вы уверены, что хотите отменить эту заявку?", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                   
+
                     Zayavka sel = (sender as Button).DataContext as Zayavka;
                     sel.StatusID = 3;
                     ConnectClass.db.SaveChanges();
-                    Up();
+                    Update();
 
 
-                    if (MessageBox.Show("Желаете ввести причина отклонения?", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    if (MessageBox.Show("Хотите указать причина отмены?", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        NavigationService.Navigate(new PageOtlonssss(sel,2));
+                        NavigationService.Navigate(new PageReasonCancel(sel, 2));
                     }
-                    }
+                }
             }
         }
 
@@ -110,7 +101,7 @@ namespace DLPropyski.MyPages
             Zayavka sel = (sender as Button).DataContext as Zayavka;
             sel.StatusID = 2;
             ConnectClass.db.SaveChanges();
-            Up();
+            Update();
         }
     }
 }

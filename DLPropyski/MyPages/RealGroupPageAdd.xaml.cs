@@ -22,7 +22,7 @@ namespace DLPropyski.MyPages
     /// </summary>
     public partial class RealGroupPageAdd : Page
     {
-        DBConnect.Zayavka zayavka = new Zayavka();
+        Zayavka zayav = new Zayavka();
 
 
         int count = 0;
@@ -30,7 +30,7 @@ namespace DLPropyski.MyPages
         public RealGroupPageAdd()
         {
             InitializeComponent();
-            MessageBox.Show("Заявка может быть оформлена только при количестве участников от 5 человек и более.","Уведомление");
+            MessageBox.Show("Заявка может быть оформлена только при кол-ве участников от 5 человек и более.","Уведомление", MessageBoxButton.OK,MessageBoxImage.Information );
             StopDate.IsEnabled = false;
 
             BtnAdd.IsEnabled = false;
@@ -42,9 +42,9 @@ namespace DLPropyski.MyPages
 
             TbPassportNumber.MaxLength = 6;
             TbPassportSeriya.MaxLength = 4;
-            Up();
+            Update();
         }
-        public void Up()
+        public void Update()
         {
             BtnAddList.IsEnabled = false;
             BtnAdd.IsEnabled = false;
@@ -103,7 +103,7 @@ namespace DLPropyski.MyPages
                 
 
                 
-                Up();
+                Update();
             }
         }
 
@@ -131,7 +131,7 @@ namespace DLPropyski.MyPages
 
             if (StopDate.SelectedDate != null && StopDate.SelectedDate > date.AddDays(15))
             {
-                MessageBox.Show("Вы не можете выбрать дату окончания, если промежуток с началом более 15 дней", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Нельзя выбрать дату окончания, если промежуток с началом больше 15 дней", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 StopDate.SelectedDate = null;
             }
             try
@@ -152,7 +152,7 @@ namespace DLPropyski.MyPages
 
         private void CBPoseshenie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Up();
+            Update();
         }
 
         private void CBPodrazdel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -173,24 +173,24 @@ namespace DLPropyski.MyPages
         private void CBEmployes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            Up();
+            Update();
         }
 
         private void TbFamiliya_TextChanged(object sender, TextChangedEventArgs e)
         {
             
-            Up();
+            Update();
         }
 
         private void TbName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Up();
+            Update();
         }
 
         private void TbOtchestvo_TextChanged(object sender, TextChangedEventArgs e)
         {
             
-            Up();
+            Update();
         }
 
         private void TbPhone_TextChanged(object sender, TextChangedEventArgs e)
@@ -213,11 +213,11 @@ namespace DLPropyski.MyPages
                 var mind = new DateTime((tod.Year - 16), tod.Month,tod.Day);
                 if (date >= mind)
                 {
-                    MessageBox.Show("Возраст должен быть более 16 лет", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Возраст должен быть больше 16 лет", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                     DPDateBirthday.SelectedDate = null;
                 }
 
-                Up();
+                Update();
             }
             catch { }
         }
@@ -226,13 +226,13 @@ namespace DLPropyski.MyPages
         {
             
          
-            Up();
+            Update();
         }
 
         private void TbPassportNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
             
-            Up();
+            Update();
            
         }
 
@@ -247,21 +247,21 @@ namespace DLPropyski.MyPages
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
          
-                zayavka.DateStart = StartDate.SelectedDate;
-                zayavka.DateStop = StopDate.SelectedDate;
+                zayav.DateStart = StartDate.SelectedDate;
+                zayav.DateStop = StopDate.SelectedDate;
 
                 VisitPurpose visit = (VisitPurpose)CBPoseshenie.SelectedItem;
                 Employee employee = (Employee)CBEmployes.SelectedItem;
                 Podrazdel podrazdel = (Podrazdel)CBPodrazdel.SelectedItem;
 
 
-                zayavka.TypeZayavkaID = 2;
-                zayavka.VisitID = visit.id;
-                zayavka.StatusID = 1;
-                zayavka.PodrazdelEmplID = employee.id;
-                zayavka.UserID = Classesss.UserClass.AuthUser.id;
+                zayav.TypeZayavkaID = 2;
+                zayav.VisitID = visit.id;
+                zayav.StatusID = 1;
+                zayav.PodrazdelEmplID = employee.id;
+                zayav.UserID = Classesss.UserClass.AuthUser.id;
 
-                ConnectClass.db.Zayavka.Add(zayavka);
+                ConnectClass.db.Zayavka.Add(zayav);
                 ConnectClass.db.SaveChanges();
 
                 Zayavka zay = ConnectClass.db.Zayavka.Where(x => x.DateStart == StartDate.SelectedDate && x.DateStop == StopDate.SelectedDate && x.PodrazdelEmplID == employee.id && x.StatusID == 1

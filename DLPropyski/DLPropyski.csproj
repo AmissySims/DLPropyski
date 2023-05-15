@@ -129,7 +129,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyPages\FirstPage.xaml">
+    <Page Include="MyPages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,7 +137,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyPages\ListLichnZayavkaPage.xaml">
+    <Page Include="MyPages\ListPersZayavkaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,7 +145,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyPages\PageOtlonssss.xaml">
+    <Page Include="MyPages\PageReasonCancel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,20 +162,20 @@
     <Compile Include="MyPages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyPages\FirstPage.xaml.cs">
-      <DependentUpon>FirstPage.xaml</DependentUpon>
+    <Compile Include="MyPages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyPages\ListGroupZayavka.xaml.cs">
       <DependentUpon>ListGroupZayavka.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyPages\ListLichnZayavkaPage.xaml.cs">
-      <DependentUpon>ListLichnZayavkaPage.xaml</DependentUpon>
+    <Compile Include="MyPages\ListPersZayavkaPage.xaml.cs">
+      <DependentUpon>ListPersZayavkaPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyPages\PageGroupZayavka.xaml.cs">
       <DependentUpon>PageGroupZayavka.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyPages\PageOtlonssss.xaml.cs">
-      <DependentUpon>PageOtlonssss.xaml</DependentUpon>
+    <Compile Include="MyPages\PageReasonCancel.xaml.cs">
+      <DependentUpon>PageReasonCancel.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyPages\RealGroupPageAdd.xaml.cs">
       <DependentUpon>RealGroupPageAdd.xaml</DependentUpon>

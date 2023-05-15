@@ -38,8 +38,8 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel>
                                 <StackPanel Grid.Column="1" Width="600" Margin="5">
-                                    <TextBlock Text="{Binding ZayvlaNumb}" Margin="0,0,0,5"></TextBlock>
-                                    <TextBlock Text="{Binding TselVisit}" Margin="0,0,0,5"></TextBlock>
+                                    <TextBlock Text="{Binding ZayvNumb}" Margin="0,0,0,5"></TextBlock>
+                                    <TextBlock Text="{Binding GoalVisit}" Margin="0,0,0,5"></TextBlock>
                                     <TextBlock Text="{Binding EmplPodrazdel}" Margin="0,0,0,5"></TextBlock>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Кол-во участников: "/>

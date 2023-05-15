@@ -28,7 +28,7 @@ namespace DLPropyski.MyPages
         public RegPage()
         {
             InitializeComponent();
-            //Up();
+            
         }
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)
@@ -45,7 +45,7 @@ namespace DLPropyski.MyPages
 
             if (ConnectClass.db.User.ToList().Find(x => x.Login == TbLogin.Text) != null)
             {
-                MessageBox.Show("Такой логин занят!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Такой логин уже существует", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             string email = TbMail.Text;
@@ -63,7 +63,7 @@ namespace DLPropyski.MyPages
                         newUse.Mail = TbMail.Text;
                         ConnectClass.db.User.Add(newUse);
                         ConnectClass.db.SaveChanges();
-                        MessageBox.Show("Регистрация пройдена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Регистрация завершена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else
                     {

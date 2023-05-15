@@ -1,21 +1,15 @@
-﻿using Microsoft.Win32;
+﻿using DLPropyski.DBConnect;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DLPropyski.DBConnect;
-using System.IO;
-using System.Text.RegularExpressions;
 
 namespace DLPropyski.MyPages
 {
@@ -68,9 +62,9 @@ namespace DLPropyski.MyPages
 
             OpenFileDialog openFile = new OpenFileDialog()
             {
-                Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg" 
+                Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg"
             };
-            
+
 
             if (openFile.ShowDialog().GetValueOrDefault())
             {
@@ -100,7 +94,7 @@ namespace DLPropyski.MyPages
             StopDate.IsEnabled = false;
             if (StartDate.SelectedDate != null && StartDate.SelectedDate < DateTime.Today.AddDays(1))
             {
-                MessageBox.Show("Вы можете выбрать дату, начиная с завтрашнего дня", "Уведомление");
+                MessageBox.Show("Можно выбрать дату, начиная с завтрашнего дня", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 StartDate.SelectedDate = null;
             }
             else if (StartDate.SelectedDate == null)
@@ -118,10 +112,10 @@ namespace DLPropyski.MyPages
         private void StopDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             DateTime date = (DateTime)StartDate.SelectedDate;
-           
+
             if (StopDate.SelectedDate != null && StopDate.SelectedDate > date.AddDays(15))
             {
-                MessageBox.Show("Нельзя дату окончания, если промежуток с началом более 15 дней", "Уведомление");
+                MessageBox.Show("Нельзя выбрать дату окончания, если промежуток с началом более 15 дней", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 StopDate.SelectedDate = null;
             }
             try
@@ -129,7 +123,7 @@ namespace DLPropyski.MyPages
                 DateTime date2 = (DateTime)StopDate.SelectedDate;
                 if (StartDate.SelectedDate == StopDate.SelectedDate || date > date2)
                 {
-                    MessageBox.Show("Дата окончания должна быть позже и отличаться от даты начала действия пропуска");
+                    MessageBox.Show("Дата окончания должна быть позже и отличаться от даты начала действия пропуска", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                     StopDate.SelectedDate = null;
                 }
             }
@@ -137,7 +131,7 @@ namespace DLPropyski.MyPages
             {
 
             }
-            
+
 
             Update();
         }
@@ -197,8 +191,8 @@ namespace DLPropyski.MyPages
                     ConnectClass.db.SaveChanges();
 
                     MessageBox.Show("Заявка отправлена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                    NavigationService.Navigate(new ListLichnZayavkaPage() );
-                    }
+                    NavigationService.Navigate(new ListPersZayavkaPage());
+                }
                 else
                 {
                     MessageBox.Show("Электронная почта введена не верно", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -222,19 +216,19 @@ namespace DLPropyski.MyPages
 
         private void TbFamiliya_TextChanged(object sender, TextChangedEventArgs e)
         {
-             
+
             Update();
         }
 
         private void TbName_TextChanged(object sender, TextChangedEventArgs e)
         {
-           
+
             Update();
         }
 
         private void TbOtchestvo_TextChanged(object sender, TextChangedEventArgs e)
         {
-           
+
             Update();
         }
 
@@ -266,7 +260,7 @@ namespace DLPropyski.MyPages
 
         private void TbPassportNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
             Update();
         }
 

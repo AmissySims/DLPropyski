@@ -44,7 +44,7 @@
                     </Border>
                     <StackPanel>
                         <TextBlock Margin="5,5,0,5">Подраделение*:</TextBlock>
-                        <!--<TextBox HorizontalAlignment="Left" x:Name="TbPodrazdelenie" Width="350" Margin="5,0,0,5"></TextBox>-->
+                      
                         <ComboBox SelectionChanged="CBPodrazdel_SelectionChanged" Width="350" Name="CBPodrazdel" Margin="-40,0,0,5"></ComboBox>
 
                     </StackPanel>

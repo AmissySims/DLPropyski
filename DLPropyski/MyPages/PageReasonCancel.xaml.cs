@@ -1,69 +1,58 @@
 ﻿using DLPropyski.DBConnect;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DLPropyski.MyPages
 {
     /// <summary>
-    /// Логика взаимодействия для PageOtlonssss.xaml
+    /// Логика взаимодействия для PageReasonCancel.xaml
     /// </summary>
-    public partial class PageOtlonssss : Page
+    public partial class PageReasonCancel : Page
     {
-        Zayavka zayavka1;
+        Zayavka zayv1;
         int v1;
-        public PageOtlonssss( Zayavka zayavka, int v )
+        public PageReasonCancel(Zayavka zayavka, int v)
         {
             InitializeComponent();
-            zayavka1 = zayavka;
+            zayv1 = zayavka;
             v1 = v;
-            Up();
+            Update();
 
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             if (v1 == 2)
             {
-                zayavka1.ResultBecouse = TbBecause.Text;
+                zayv1.ResultBecouse = TbBecause.Text;
                 ConnectClass.db.SaveChanges();
                 MessageBox.Show("Спасибо", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 NavigationService.Navigate(new ListGroupZayavka());
             }
             else
             {
-                zayavka1.ResultBecouse = TbBecause.Text;
-               ConnectClass.db.SaveChanges();
+                zayv1.ResultBecouse = TbBecause.Text;
+                ConnectClass.db.SaveChanges();
                 MessageBox.Show("Спасибо", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                NavigationService.Navigate(new ListLichnZayavkaPage());
+                NavigationService.Navigate(new ListPersZayavkaPage());
             }
-            
+
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
             if (v1 == 2)
             {
-          
+
                 NavigationService.Navigate(new ListGroupZayavka());
             }
             else
             {
-               
-                NavigationService.Navigate(new ListLichnZayavkaPage());
+
+                NavigationService.Navigate(new ListPersZayavkaPage());
             }
         }
-        void Up()
+        void Update()
         {
             BtnSave.IsEnabled = false;
 
@@ -74,7 +63,7 @@ namespace DLPropyski.MyPages
         }
         private void TbBecause_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Up();
+            Update();
         }
     }
 

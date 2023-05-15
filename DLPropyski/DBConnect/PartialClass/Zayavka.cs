@@ -12,7 +12,7 @@ namespace DLPropyski.DBConnect
    public partial class Zayavka
     {
 
-        public  string ZayvlaNumb
+        public  string ZayvNumb
         {
             get
             {
@@ -20,11 +20,11 @@ namespace DLPropyski.DBConnect
             }
         }
 
-        public string TselVisit
+        public string GoalVisit
         {
             get
             {
-                return ("Цель заявки - " +VisitPurpose.Name);
+                return ("Цель - " + VisitPurpose.Name);
             }
         }
 
@@ -54,13 +54,13 @@ namespace DLPropyski.DBConnect
             {
                     if (StatusID == 1 || StatusID == 2 || StatusID == 4)
                     {
-                    return ("статус вашей заявки - " + Status.Name);
+                    return ("Статус заявки - " + Status.Name);
                    
 
                     }
                     else  
                     {
-                         return ("статус вашей заявки - " + Status.Name + ". Причина: " + ResultBecouse);
+                         return ("Статус  заявки - " + Status.Name + ". Причина: " + ResultBecouse);
 
                     }
                         
