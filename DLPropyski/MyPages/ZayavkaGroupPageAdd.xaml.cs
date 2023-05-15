@@ -73,27 +73,27 @@ namespace DLPropyski.MyPages
                         if (Regex.IsMatch(email, @"^[\w.-]+@\w+\.\w+$"))
                         {
                             Client client = new Client();
-                            client.FName = TbFamiliya.Text;
-                            client.LName = TbOtchestvo.Text;
-                            client.Name = TbName.Text;
+                            client.FName = TbFamiliya.Text.Trim();
+                            client.LName = TbOtchestvo.Text.Trim();
+                            client.Name = TbName.Text.Trim();
                             client.Mail = TbMail.Text;
                             client.NameOrganizatciya = TbOrganizaciya.Text;
                             client.Phone = TbPhone.Text;
                             client.Primechanie = TbPrim.Text;
                             client.DateBirthfay = DPDateBirthday.SelectedDate;
-                            client.PassportSeries = int.Parse(TbPassportSeriya.Text);
-                            client.PassportNumber = int.Parse(TbPassportNumber.Text);
+                            client.PassportSeries = int.Parse(TbPassportSeriya.Text.Trim());
+                            client.PassportNumber = int.Parse(TbPassportNumber.Text.Trim());
                             clients.Add(client);
                             count++;
                         }
                         else
                         {
-                            MessageBox.Show("Электронная почта введена не верно", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("Электронная почта введена неверно", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Номер введен не верно", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Номер введен неверно", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
 
