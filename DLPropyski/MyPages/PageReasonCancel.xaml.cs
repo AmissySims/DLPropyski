@@ -10,28 +10,28 @@ namespace DLPropyski.MyPages
     /// </summary>
     public partial class PageReasonCancel : Page
     {
-        Zayavka zayv1;
-        int v1;
-        public PageReasonCancel(Zayavka zayavka, int v)
+        Zayavka zayv;
+        int z1;
+        public PageReasonCancel(Zayavka zayavka, int z)
         {
             InitializeComponent();
-            zayv1 = zayavka;
-            v1 = v;
+            zayv = zayavka;
+            z1 = z;
             Update();
 
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (v1 == 2)
+            if (z1 == 2)
             {
-                zayv1.ResultBecouse = TbBecause.Text;
+                zayv.ResultBecouse = TbReason.Text;
                 Connect.db.SaveChanges();
                 MessageBox.Show("Спасибо", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 NavigationService.Navigate(new ListGroupZayavkaPage());
             }
             else
             {
-                zayv1.ResultBecouse = TbBecause.Text;
+                zayv.ResultBecouse = TbReason.Text;
                 Connect.db.SaveChanges();
                 MessageBox.Show("Спасибо", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 NavigationService.Navigate(new ListPersZayavkaPage());
@@ -41,7 +41,7 @@ namespace DLPropyski.MyPages
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            if (v1 == 2)
+            if (z1 == 2)
             {
 
                 NavigationService.Navigate(new ListGroupZayavkaPage());
@@ -56,12 +56,12 @@ namespace DLPropyski.MyPages
         {
             BtnSave.IsEnabled = false;
 
-            if (TbBecause.Text.Length > 0)
+            if (TbReason.Text.Length > 0)
             {
                 BtnSave.IsEnabled = true;
             }
         }
-        private void TbBecause_TextChanged(object sender, TextChangedEventArgs e)
+        private void TbReason_TextChanged(object sender, TextChangedEventArgs e)
         {
             Update();
         }

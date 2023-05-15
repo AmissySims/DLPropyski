@@ -84,7 +84,7 @@ namespace DLPropyski.MyPages
 
                     if (MessageBox.Show("Хотите ввести причину отклонения?", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        NavigationService.Navigate(new PageReasonCancel(sel, 1));
+                        NavigationService.Navigate(new PageReasonCancel(sel, 4));
                     }
                 }
             }
