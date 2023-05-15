@@ -1,0 +1,61 @@
+﻿<Page x:Class="DLPropyski.MyPages.ListLichnZayavkaPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DLPropyski.MyPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListLichnZayavkaPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"></RowDefinition>
+            <RowDefinition Height="83*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Margin="20,10,20,0">Личные посещения</TextBlock>
+
+            <Border  BorderBrush="#FFFF9619" BorderThickness="1" Height="23" CornerRadius="5" Margin="0,0,20,0">
+                <Button  BorderBrush="{x:Null}" Background="White" x:Name="GrouppZayavka" Click="GrouppZayavka_Click" Height="20">Групповые заявки</Button>
+            </Border>
+            <Border BorderBrush="#FFFF9619" BorderThickness="1" Height="23" CornerRadius="5" Margin="0,0,20,0">
+                <Button  BorderBrush="{x:Null}" Background="White" x:Name="AddGroupZayavka" Click="AddGroupZayavka_Click" Height="20">Создать заявку</Button>
+
+            </Border>
+        </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+            <ListView x:Name="ListZayavka" d:ItemsSource="{d:SampleData}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="600*"></ColumnDefinition>
+                                <ColumnDefinition Width="0*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <StackPanel Grid.Column="0" Width="600">
+                                    <TextBlock  Text="{Binding ZayvlaNumb}" Margin="0,0,0,5"></TextBlock>
+                                    <TextBlock Text="{Binding TselVisit}" Margin="0,0,0,5"></TextBlock>
+                                    <TextBlock Text="{Binding EmplPodrazdel}"></TextBlock>
+
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding StatusText}" TextWrapping="Wrap" Margin="0,0,0,5"></TextBlock>
+                                    <Border BorderBrush="#FFFF9619" BorderThickness="1"  Visibility="{Binding visibilityBtn}" Height="23" CornerRadius="5" Margin="0,0,20,5">
+                                        <Button  BorderBrush="{x:Null}" Background="White" Visibility="{Binding visibilityBtn}" x:Name="BtnDelete" Click="BtnDelete_Click" >Отменить заявку</Button>
+                                    </Border>
+                                    <Border BorderBrush="#FFFF9619" BorderThickness="1" Height="23"  Visibility="{Binding visibilityBtn2}" CornerRadius="5" Margin="0,0,20,0">
+                                        <Button  BorderBrush="{x:Null}" Background="White" Visibility="{Binding visibilityBtn2}" x:Name="BtnYes" Click="BtnYes_Click" >Принять заявку</Button>
+                                    </Border>
+
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>

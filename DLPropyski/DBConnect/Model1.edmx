@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ZayavkaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BlackList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Describe" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FName" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="LName" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Mail" Type="varchar(max)" />
+          <Property Name="NameOrganizatciya" Type="varchar(max)" />
+          <Property Name="Primechanie" Type="varchar(max)" />
+          <Property Name="DateBirthfay" Type="date" />
+          <Property Name="PassportSeries" Type="decimal" Precision="4" Scale="0" />
+          <Property Name="PassportNumber" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="Images" Type="image" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PodrazdelID" Type="int" />
+          <Property Name="FName" Type="varchar(max)" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="LName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Podrazdel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TypeZayavka">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" />
+          <Property Name="Mail" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="IsAdmin" Type="bit" />
+        </EntityType>
+        <EntityType Name="VisitPurpose">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Zayavka">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeZayavkaID" Type="int" />
+          <Property Name="DateStart" Type="date" />
+          <Property Name="DateStop" Type="date" />
+          <Property Name="VisitID" Type="int" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="ResultBecouse" Type="varchar(max)" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="PodrazdelEmplID" Type="int" />
+        </EntityType>
+        <EntityType Name="ZayavkaClient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ZayavkaID" Type="int" />
+          <Property Name="ClientID" Type="int" />
+        </EntityType>
+        <Association Name="FK_BlackList_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Podrazdel">
+          <End Role="Podrazdel" Type="Self.Podrazdel" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podrazdel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="PodrazdelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="PodrazdelEmplID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_TypeZayavka">
+          <End Role="TypeZayavka" Type="Self.TypeZayavka" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeZayavka">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="TypeZayavkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_VisitPurpose">
+          <End Role="VisitPurpose" Type="Self.VisitPurpose" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitPurpose">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="VisitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZayavkaClient_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="ZayavkaClient" Type="Self.ZayavkaClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ZayavkaClient">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZayavkaClient_Zayavka">
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="0..1" />
+          <End Role="ZayavkaClient" Type="Self.ZayavkaClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zayavka">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ZayavkaClient">
+              <PropertyRef Name="ZayavkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZayavkaModelStoreContainer">
+          <EntitySet Name="BlackList" EntityType="Self.BlackList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Podrazdel" EntityType="Self.Podrazdel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeZayavka" EntityType="Self.TypeZayavka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitPurpose" EntityType="Self.VisitPurpose" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zayavka" EntityType="Self.Zayavka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZayavkaClient" EntityType="Self.ZayavkaClient" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BlackList_User" Association="Self.FK_BlackList_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="BlackList" EntitySet="BlackList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Podrazdel" Association="Self.FK_Employee_Podrazdel">
+            <End Role="Podrazdel" EntitySet="Podrazdel" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_Employee" Association="Self.FK_Zayavka_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_Status" Association="Self.FK_Zayavka_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_TypeZayavka" Association="Self.FK_Zayavka_TypeZayavka">
+            <End Role="TypeZayavka" EntitySet="TypeZayavka" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_User" Association="Self.FK_Zayavka_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_VisitPurpose" Association="Self.FK_Zayavka_VisitPurpose">
+            <End Role="VisitPurpose" EntitySet="VisitPurpose" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZayavkaClient_Client" Association="Self.FK_ZayavkaClient_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ZayavkaClient" EntitySet="ZayavkaClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZayavkaClient_Zayavka" Association="Self.FK_ZayavkaClient_Zayavka">
+            <End Role="Zayavka" EntitySet="Zayavka" />
+            <End Role="ZayavkaClient" EntitySet="ZayavkaClient" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ZayavkaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BlackList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Describe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_BlackList_User" FromRole="BlackList" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NameOrganizatciya" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Primechanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateBirthfay" Type="DateTime" Precision="0" />
+          <Property Name="PassportSeries" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="PassportNumber" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="Images" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ZayavkaClient" Relationship="Self.FK_ZayavkaClient_Client" FromRole="Client" ToRole="ZayavkaClient" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PodrazdelID" Type="Int32" />
+          <Property Name="FName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Podrazdel" Relationship="Self.FK_Employee_Podrazdel" FromRole="Employee" ToRole="Podrazdel" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK_Zayavka_Employee" FromRole="Employee" ToRole="Zayavka" />
+        </EntityType>
+        <EntityType Name="Podrazdel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Podrazdel" FromRole="Podrazdel" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK_Zayavka_Status" FromRole="Status" ToRole="Zayavka" />
+        </EntityType>
+        <EntityType Name="TypeZayavka">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK_Zayavka_TypeZayavka" FromRole="TypeZayavka" ToRole="Zayavka" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <NavigationProperty Name="BlackList" Relationship="Self.FK_BlackList_User" FromRole="User" ToRole="BlackList" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK_Zayavka_User" FromRole="User" ToRole="Zayavka" />
+        </EntityType>
+        <EntityType Name="VisitPurpose">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK_Zayavka_VisitPurpose" FromRole="VisitPurpose" ToRole="Zayavka" />
+        </EntityType>
+        <EntityType Name="Zayavka">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeZayavkaID" Type="Int32" />
+          <Property Name="DateStart" Type="DateTime" Precision="0" />
+          <Property Name="DateStop" Type="DateTime" Precision="0" />
+          <Property Name="VisitID" Type="Int32" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="ResultBecouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="PodrazdelEmplID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Zayavka_Employee" FromRole="Zayavka" ToRole="Employee" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Zayavka_Status" FromRole="Zayavka" ToRole="Status" />
+          <NavigationProperty Name="TypeZayavka" Relationship="Self.FK_Zayavka_TypeZayavka" FromRole="Zayavka" ToRole="TypeZayavka" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Zayavka_User" FromRole="Zayavka" ToRole="User" />
+          <NavigationProperty Name="VisitPurpose" Relationship="Self.FK_Zayavka_VisitPurpose" FromRole="Zayavka" ToRole="VisitPurpose" />
+          <NavigationProperty Name="ZayavkaClient" Relationship="Self.FK_ZayavkaClient_Zayavka" FromRole="Zayavka" ToRole="ZayavkaClient" />
+        </EntityType>
+        <EntityType Name="ZayavkaClient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ZayavkaID" Type="Int32" />
+          <Property Name="ClientID" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_ZayavkaClient_Client" FromRole="ZayavkaClient" ToRole="Client" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK_ZayavkaClient_Zayavka" FromRole="ZayavkaClient" ToRole="Zayavka" />
+        </EntityType>
+        <Association Name="FK_BlackList_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZayavkaClient_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="ZayavkaClient" Type="Self.ZayavkaClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ZayavkaClient">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Podrazdel">
+          <End Role="Podrazdel" Type="Self.Podrazdel" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podrazdel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="PodrazdelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="PodrazdelEmplID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_TypeZayavka">
+          <End Role="TypeZayavka" Type="Self.TypeZayavka" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeZayavka">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="TypeZayavkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_VisitPurpose">
+          <End Role="VisitPurpose" Type="Self.VisitPurpose" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitPurpose">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="VisitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZayavkaClient_Zayavka">
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="0..1" />
+          <End Role="ZayavkaClient" Type="Self.ZayavkaClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zayavka">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ZayavkaClient">
+              <PropertyRef Name="ZayavkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZayavkaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BlackList" EntityType="Self.BlackList" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Podrazdel" EntityType="Self.Podrazdel" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="TypeZayavka" EntityType="Self.TypeZayavka" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="VisitPurpose" EntityType="Self.VisitPurpose" />
+          <EntitySet Name="Zayavka" EntityType="Self.Zayavka" />
+          <EntitySet Name="ZayavkaClient" EntityType="Self.ZayavkaClient" />
+          <AssociationSet Name="FK_BlackList_User" Association="Self.FK_BlackList_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="BlackList" EntitySet="BlackList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZayavkaClient_Client" Association="Self.FK_ZayavkaClient_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ZayavkaClient" EntitySet="ZayavkaClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Podrazdel" Association="Self.FK_Employee_Podrazdel">
+            <End Role="Podrazdel" EntitySet="Podrazdel" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_Employee" Association="Self.FK_Zayavka_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_Status" Association="Self.FK_Zayavka_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_TypeZayavka" Association="Self.FK_Zayavka_TypeZayavka">
+            <End Role="TypeZayavka" EntitySet="TypeZayavka" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_User" Association="Self.FK_Zayavka_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_VisitPurpose" Association="Self.FK_Zayavka_VisitPurpose">
+            <End Role="VisitPurpose" EntitySet="VisitPurpose" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZayavkaClient_Zayavka" Association="Self.FK_ZayavkaClient_Zayavka">
+            <End Role="Zayavka" EntitySet="Zayavka" />
+            <End Role="ZayavkaClient" EntitySet="ZayavkaClient" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ZayavkaModelStoreContainer" CdmEntityContainer="ZayavkaEntities">
+          <EntitySetMapping Name="BlackList">
+            <EntityTypeMapping TypeName="ZayavkaModel.BlackList">
+              <MappingFragment StoreEntitySet="BlackList">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Describe" ColumnName="Describe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="ZayavkaModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="NameOrganizatciya" ColumnName="NameOrganizatciya" />
+                <ScalarProperty Name="Primechanie" ColumnName="Primechanie" />
+                <ScalarProperty Name="DateBirthfay" ColumnName="DateBirthfay" />
+                <ScalarProperty Name="PassportSeries" ColumnName="PassportSeries" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="ZayavkaModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="PodrazdelID" ColumnName="PodrazdelID" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Podrazdel">
+            <EntityTypeMapping TypeName="ZayavkaModel.Podrazdel">
+              <MappingFragment StoreEntitySet="Podrazdel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="ZayavkaModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeZayavka">
+            <EntityTypeMapping TypeName="ZayavkaModel.TypeZayavka">
+              <MappingFragment StoreEntitySet="TypeZayavka">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="ZayavkaModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitPurpose">
+            <EntityTypeMapping TypeName="ZayavkaModel.VisitPurpose">
+              <MappingFragment StoreEntitySet="VisitPurpose">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zayavka">
+            <EntityTypeMapping TypeName="ZayavkaModel.Zayavka">
+              <MappingFragment StoreEntitySet="Zayavka">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TypeZayavkaID" ColumnName="TypeZayavkaID" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateStop" ColumnName="DateStop" />
+                <ScalarProperty Name="VisitID" ColumnName="VisitID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="ResultBecouse" ColumnName="ResultBecouse" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PodrazdelEmplID" ColumnName="PodrazdelEmplID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZayavkaClient">
+            <EntityTypeMapping TypeName="ZayavkaModel.ZayavkaClient">
+              <MappingFragment StoreEntitySet="ZayavkaClient">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ZayavkaID" ColumnName="ZayavkaID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
