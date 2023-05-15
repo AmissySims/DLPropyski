@@ -21,7 +21,7 @@ namespace DLPropyski.MyPages
 
         private void BtnGroupp_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ListGroupZayavka());
+            NavigationService.Navigate(new ListGroupZayavkaPage());
 
         }
     }

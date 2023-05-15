@@ -33,7 +33,7 @@ namespace DLPropyski.DBConnect
             
             get
             {
-                Employee employee = ConnectClass.db.Employee.Where(x => x.id == PodrazdelEmplID).FirstOrDefault();
+                Employee employee = Connect.db.Employee.Where(x => x.id == PodrazdelEmplID).FirstOrDefault();
                 return ("Сотрудник подразделения: " + employee.FName +" " + employee.Name +" " + employee.LName);
             }
         }
@@ -43,7 +43,7 @@ namespace DLPropyski.DBConnect
 
             get
             {
-                List<ZayavkaClient> cl = ConnectClass.db.ZayavkaClient.Where(x => x.ZayavkaID == id).ToList();
+                List<ZayavkaClient> cl = Connect.db.ZayavkaClient.Where(x => x.ZayavkaID == id).ToList();
                 return cl.Count;
             }
         }
@@ -71,7 +71,7 @@ namespace DLPropyski.DBConnect
         {
             get
             {
-                if(Classesss.UserClass.AuthUser.IsAdmin == true && (StatusID == 1 || StatusID == 2))
+                if(Classess.UserClass.AuthUser.IsAdmin == true && (StatusID == 1 || StatusID == 2))
                 {
                     return Visibility.Visible;
                 }
@@ -86,7 +86,7 @@ namespace DLPropyski.DBConnect
         {
             get
             {
-                if (Classesss.UserClass.AuthUser.IsAdmin == true && StatusID == 1 )
+                if (Classess.UserClass.AuthUser.IsAdmin == true && StatusID == 1 )
                 {
                     return Visibility.Visible;
                 }

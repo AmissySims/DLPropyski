@@ -25,14 +25,14 @@ namespace DLPropyski.MyPages
             if (v1 == 2)
             {
                 zayv1.ResultBecouse = TbBecause.Text;
-                ConnectClass.db.SaveChanges();
+                Connect.db.SaveChanges();
                 MessageBox.Show("Спасибо", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                NavigationService.Navigate(new ListGroupZayavka());
+                NavigationService.Navigate(new ListGroupZayavkaPage());
             }
             else
             {
                 zayv1.ResultBecouse = TbBecause.Text;
-                ConnectClass.db.SaveChanges();
+                Connect.db.SaveChanges();
                 MessageBox.Show("Спасибо", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 NavigationService.Navigate(new ListPersZayavkaPage());
             }
@@ -44,7 +44,7 @@ namespace DLPropyski.MyPages
             if (v1 == 2)
             {
 
-                NavigationService.Navigate(new ListGroupZayavka());
+                NavigationService.Navigate(new ListGroupZayavkaPage());
             }
             else
             {

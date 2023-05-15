@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLPropyski.Classesss
+namespace DLPropyski.DBConnect
 {
- public   class UserClass
+    class Connect
     {
-        public static DBConnect.User AuthUser;
+
+        public static Zayavka2Entities db = new Zayavka2Entities();
     }
 }

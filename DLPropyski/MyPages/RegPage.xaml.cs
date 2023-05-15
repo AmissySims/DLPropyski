@@ -33,7 +33,7 @@ namespace DLPropyski.MyPages
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)
         {
-            User user = ConnectClass.db.User.Where(x => x.Login == TbLogin.Text).FirstOrDefault();
+            User user = Connect.db.User.Where(x => x.Login == TbLogin.Text).FirstOrDefault();
             if (user == null)
             {
                 TbLogUnickle.Visibility = Visibility.Collapsed;
@@ -43,7 +43,7 @@ namespace DLPropyski.MyPages
                 TbLogUnickle.Visibility = Visibility.Visible;
             }
 
-            if (ConnectClass.db.User.ToList().Find(x => x.Login == TbLogin.Text) != null)
+            if (Connect.db.User.ToList().Find(x => x.Login == TbLogin.Text) != null)
             {
                 MessageBox.Show("Такой логин уже существует", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
@@ -61,8 +61,8 @@ namespace DLPropyski.MyPages
                         newUse.Login = TbLogin.Text;
                         newUse.Password = TbPassword.Text;
                         newUse.Mail = TbMail.Text;
-                        ConnectClass.db.User.Add(newUse);
-                        ConnectClass.db.SaveChanges();
+                        Connect.db.User.Add(newUse);
+                        Connect.db.SaveChanges();
                         MessageBox.Show("Регистрация завершена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else

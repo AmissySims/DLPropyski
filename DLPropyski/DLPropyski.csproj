@@ -72,14 +72,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classesss\UserClass.cs" />
+    <Compile Include="Classess\UserClass.cs" />
     <Compile Include="DBConnect\BlackList.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBConnect\Client.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBConnect\ConnectClass.cs" />
+    <Compile Include="DBConnect\Connect.cs" />
     <Compile Include="DBConnect\Employee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -133,7 +133,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyPages\ListGroupZayavka.xaml">
+    <Page Include="MyPages\ListGroupZayavkaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,7 +141,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyPages\PageGroupZayavka.xaml">
+    <Page Include="MyPages\PagePersZayavka.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,7 +149,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyPages\RealGroupPageAdd.xaml">
+    <Page Include="MyPages\ZayavkaGroupPageAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,20 +165,20 @@
     <Compile Include="MyPages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyPages\ListGroupZayavka.xaml.cs">
-      <DependentUpon>ListGroupZayavka.xaml</DependentUpon>
+    <Compile Include="MyPages\ListGroupZayavkaPage.xaml.cs">
+      <DependentUpon>ListGroupZayavkaPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyPages\ListPersZayavkaPage.xaml.cs">
       <DependentUpon>ListPersZayavkaPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyPages\PageGroupZayavka.xaml.cs">
-      <DependentUpon>PageGroupZayavka.xaml</DependentUpon>
+    <Compile Include="MyPages\PagePersZayavka.xaml.cs">
+      <DependentUpon>PagePersZayavka.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyPages\PageReasonCancel.xaml.cs">
       <DependentUpon>PageReasonCancel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyPages\RealGroupPageAdd.xaml.cs">
-      <DependentUpon>RealGroupPageAdd.xaml</DependentUpon>
+    <Compile Include="MyPages\ZayavkaGroupPageAdd.xaml.cs">
+      <DependentUpon>ZayavkaGroupPageAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyPages\RegPage.xaml.cs">
       <DependentUpon>RegPage.xaml</DependentUpon>

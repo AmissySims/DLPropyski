@@ -19,7 +19,7 @@ namespace DLPropyski.MyPages
         private void BtnAuth_Click(object sender, RoutedEventArgs e)
         {
 
-            User user = ConnectClass.db.User.Where(x => x.Login == TbLogin.Text && x.Password == TbPassword.Text).FirstOrDefault();
+            User user = Connect.db.User.Where(x => x.Login == TbLogin.Text && x.Password == TbPassword.Text).FirstOrDefault();
             if (user == null)
             {
                 MessageBox.Show("Проверьте введенные данные", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -27,7 +27,7 @@ namespace DLPropyski.MyPages
             }
             else
             {
-                Classesss.UserClass.AuthUser = user;
+                Classess.UserClass.AuthUser = user;
                 NavigationService.Navigate(new MainPage());
             }
 

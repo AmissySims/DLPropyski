@@ -10,33 +10,33 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using DLPropyski.Classess;
 
 namespace DLPropyski.MyPages
 {
     /// <summary>
-    /// Логика взаимодействия для PageGroupZayavka.xaml
+    /// Логика взаимодействия для PagePersZayavka.xaml
     /// </summary>
-    public partial class PageGroupZayavka : Page
+    public partial class PagePersZayavka : Page
 
     {
         Zayavka zayavka = new Zayavka();
         Client client = new Client();
 
 
-        public PageGroupZayavka()
+        public PagePersZayavka()
         {
             InitializeComponent();
             StopDate.IsEnabled = false;
 
             BtnAdd.IsEnabled = false;
-            CBPoseshenie.ItemsSource = ConnectClass.db.VisitPurpose.ToList();
+            CBPoseshenie.ItemsSource = Connect.db.VisitPurpose.ToList();
             CBPoseshenie.DisplayMemberPath = "Name";
 
-            CBPodrazdel.ItemsSource = ConnectClass.db.Podrazdel.ToList();
+            CBPodrazdel.ItemsSource = Connect.db.Podrazdel.ToList();
             CBPodrazdel.DisplayMemberPath = "Name";
 
-            TbPassportNumber.MaxLength = 6;
-            TbPassportSeriya.MaxLength = 4;
+           
 
         }
 
@@ -53,7 +53,7 @@ namespace DLPropyski.MyPages
         {
             if (MessageBox.Show("Хотите очистить эту форму?", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                NavigationService.Navigate(new PageGroupZayavka());
+                NavigationService.Navigate(new PagePersZayavka());
             }
         }
 
@@ -78,7 +78,7 @@ namespace DLPropyski.MyPages
             CBEmployes.IsEnabled = false;
 
             Podrazdel podrazdel = (Podrazdel)CBPodrazdel.SelectedItem;
-            List<Employee> employees = ConnectClass.db.Employee.Where(x => x.PodrazdelID == podrazdel.id).ToList();
+            List<Employee> employees = Connect.db.Employee.Where(x => x.PodrazdelID == podrazdel.id).ToList();
             CBEmployes.ItemsSource = employees;
             CBEmployes.DisplayMemberPath = "FIO";
 
@@ -115,7 +115,7 @@ namespace DLPropyski.MyPages
 
             if (StopDate.SelectedDate != null && StopDate.SelectedDate > date.AddDays(15))
             {
-                MessageBox.Show("Нельзя выбрать дату окончания, если промежуток с началом более 15 дней", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Нельзя выбрать дату окончания, если промежуток с началом больше 15 дней", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 StopDate.SelectedDate = null;
             }
             try
@@ -123,7 +123,7 @@ namespace DLPropyski.MyPages
                 DateTime date2 = (DateTime)StopDate.SelectedDate;
                 if (StartDate.SelectedDate == StopDate.SelectedDate || date > date2)
                 {
-                    MessageBox.Show("Дата окончания должна быть позже и отличаться от даты начала действия пропуска", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Дата окончания должна быть позже от даты начала и отличаться от нее действия пропуска", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                     StopDate.SelectedDate = null;
                 }
             }
@@ -156,41 +156,41 @@ namespace DLPropyski.MyPages
                     zayavka.VisitID = visit.id;
                     zayavka.StatusID = 1;
                     zayavka.PodrazdelEmplID = employee.id;
-                    zayavka.UserID = Classesss.UserClass.AuthUser.id;
+                    zayavka.UserID = Classess.UserClass.AuthUser.id;
 
-                    ConnectClass.db.Zayavka.Add(zayavka);
-                    ConnectClass.db.SaveChanges();
-                    Zayavka zay = ConnectClass.db.Zayavka.Where(x => x.DateStart == StartDate.SelectedDate && x.DateStop == StopDate.SelectedDate && x.PodrazdelEmplID == employee.id && x.StatusID == 1
-                    && x.TypeZayavkaID == 1 && x.VisitID == visit.id && x.UserID == (Classesss.UserClass.AuthUser.id)).FirstOrDefault();
+                    Connect.db.Zayavka.Add(zayavka);
+                    Connect.db.SaveChanges();
+                    Zayavka zay = Connect.db.Zayavka.Where(x => x.DateStart == StartDate.SelectedDate && x.DateStop == StopDate.SelectedDate && x.PodrazdelEmplID == employee.id && x.StatusID == 1
+                    && x.TypeZayavkaID == 1 && x.VisitID == visit.id && x.UserID == (Classess.UserClass.AuthUser.id)).FirstOrDefault();
 
-                    client.FName = TbFamiliya.Text;
-                    client.LName = TbOtchestvo.Text;
-                    client.Name = TbName.Text;
-                    client.Mail = TbMail.Text;
-                    client.NameOrganizatciya = TbOrganizaciya.Text;
-                    client.Phone = TbPhone.Text;
+                    client.FName = TbFamiliya.Text.Trim();
+                    client.LName = TbOtchestvo.Text.Trim();
+                    client.Name = TbName.Text.Trim();
+                    client.Mail = TbMail.Text.Trim();
+                    client.NameOrganizatciya = TbOrganizaciya.Text.Trim();
+                    client.Phone = TbPhone.Text.Trim();
                     client.Primechanie = TbPrim.Text;
                     client.DateBirthfay = DPDateBirthday.SelectedDate;
-                    client.PassportSeries = int.Parse(TbPassportSeriya.Text);
-                    client.PassportNumber = int.Parse(TbPassportNumber.Text);
+                    client.PassportSeries = int.Parse(TbPassportSeriya.Text.Trim());
+                    client.PassportNumber = int.Parse(TbPassportNumber.Text.Trim());
 
-                    ConnectClass.db.Client.Add(client);
-                    ConnectClass.db.SaveChanges();
+                    Connect.db.Client.Add(client);
+                    Connect.db.SaveChanges();
 
 
-                    Client clientt = ConnectClass.db.Client.Where(x => x.FName == TbFamiliya.Text && x.LName == TbOtchestvo.Text &&
-                    x.Name == TbName.Text && x.Mail == TbMail.Text && x.PassportNumber == client.PassportNumber && x.PassportSeries == client.PassportSeries
+                    Client clientt = Connect.db.Client.Where(x => x.FName == TbFamiliya.Text.Trim() && x.LName == TbOtchestvo.Text.Trim() &&
+                    x.Name == TbName.Text.Trim() && x.Mail == TbMail.Text.Trim() && x.PassportNumber == client.PassportNumber && x.PassportSeries == client.PassportSeries
                     && x.Phone == TbPhone.Text && x.Primechanie == TbPrim.Text && x.DateBirthfay == DPDateBirthday.SelectedDate).FirstOrDefault();
 
                     ZayavkaClient zayClient = new ZayavkaClient();
                     zayClient.ClientID = clientt.id;
                     zayClient.ZayavkaID = zay.id;
 
-                    ConnectClass.db.ZayavkaClient.Add(zayClient);
+                    Connect.db.ZayavkaClient.Add(zayClient);
 
-                    ConnectClass.db.SaveChanges();
+                    Connect.db.SaveChanges();
 
-                    MessageBox.Show("Заявка отправлена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Заявка создана", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                     NavigationService.Navigate(new ListPersZayavkaPage());
                 }
                 else
