@@ -264,7 +264,7 @@ namespace DLPropyski.MyPages
                 ConnectClass.db.Zayavka.Add(zayavka);
                 ConnectClass.db.SaveChanges();
 
-                Zayavka zayavka1 = ConnectClass.db.Zayavka.Where(x => x.DateStart == StartDate.SelectedDate && x.DateStop == StopDate.SelectedDate && x.PodrazdelEmplID == employee.id && x.StatusID == 1
+                Zayavka zay = ConnectClass.db.Zayavka.Where(x => x.DateStart == StartDate.SelectedDate && x.DateStop == StopDate.SelectedDate && x.PodrazdelEmplID == employee.id && x.StatusID == 1
                && x.TypeZayavkaID == 2 && x.VisitID == visit.id && x.UserID == (Classesss.UserClass.AuthUser.id)).FirstOrDefault();
 
                 for (int i = 0; i < clients.Count; i++)
@@ -276,11 +276,11 @@ namespace DLPropyski.MyPages
                x.Name == client3.Name && x.Mail == client3.Mail && x.PassportNumber == client3.PassportNumber && x.PassportSeries == client3.PassportSeries
                && x.Phone == client3.Phone && x.Primechanie == client3.Primechanie && x.DateBirthfay == client3.DateBirthfay).FirstOrDefault();
 
-                    ZayavkaClient zayavkaClient = new ZayavkaClient();
-                    zayavkaClient.ClientID = client2.id;
-                    zayavkaClient.ZayavkaID = zayavka1.id;
+                    ZayavkaClient zayClient = new ZayavkaClient();
+                    zayClient.ClientID = client2.id;
+                    zayClient.ZayavkaID = zay.id;
 
-                    ConnectClass.db.ZayavkaClient.Add(zayavkaClient);
+                    ConnectClass.db.ZayavkaClient.Add(zayClient);
 
                     ConnectClass.db.SaveChanges();
                 }

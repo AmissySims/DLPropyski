@@ -42,7 +42,7 @@ namespace DLPropyski.MyPages
 
                 else
                 {
-                    MessageBox.Show("У вас нет заявок на личное посещение", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Нет заявок на личное посещение", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             else
@@ -71,7 +71,7 @@ namespace DLPropyski.MyPages
         {
             if (isAdmines == false)
             {
-                if (MessageBox.Show("Вы уверены, что желаете отменить эту заявку? Отменить нельзя", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Вы уверены, что желаете отменить эту заявку? ", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Zayavka sel = (sender as Button).DataContext as Zayavka;
                     sel.StatusID = 4;
@@ -82,7 +82,7 @@ namespace DLPropyski.MyPages
             }
             else
             {
-                if (MessageBox.Show("Вы уверены, что желаете отменить эту заявку? Отменить нельзя", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Вы уверены, что желаете отменить эту заявку?", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
 
                     Zayavka sel = (sender as Button).DataContext as Zayavka;
@@ -91,7 +91,7 @@ namespace DLPropyski.MyPages
                     Up();
 
 
-                    if (MessageBox.Show("Желаете ввести причина отклонения?", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    if (MessageBox.Show("Желаете ввести причину отклонения?", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
                         NavigationService.Navigate(new PageOtlonssss(sel, 1));
                     }
@@ -104,7 +104,7 @@ namespace DLPropyski.MyPages
             NavigationService.Navigate(new PageGroupZayavka());
         }
 
-        private void BtnYes_Click(object sender, RoutedEventArgs e)
+        private void BtnAccept_Click(object sender, RoutedEventArgs e)
         {
             Zayavka sel = (sender as Button).DataContext as Zayavka;
             sel.StatusID = 2;

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ZayavkaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище Zayavka2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BlackList">
           <Key>
             <PropertyRef Name="id" />
@@ -209,7 +209,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ZayavkaModelStoreContainer">
+        <EntityContainer Name="Хранилище Zayavka2ModelContainer">
           <EntitySet Name="BlackList" EntityType="Self.BlackList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
@@ -261,7 +261,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ZayavkaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Zayavka2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="BlackList">
           <Key>
             <PropertyRef Name="id" />
@@ -484,7 +484,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ZayavkaEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Zayavka2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BlackList" EntityType="Self.BlackList" />
           <EntitySet Name="Client" EntityType="Self.Client" />
           <EntitySet Name="Employee" EntityType="Self.Employee" />
@@ -537,9 +537,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ZayavkaModelStoreContainer" CdmEntityContainer="ZayavkaEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Zayavka2ModelContainer" CdmEntityContainer="Zayavka2Entities">
           <EntitySetMapping Name="BlackList">
-            <EntityTypeMapping TypeName="ZayavkaModel.BlackList">
+            <EntityTypeMapping TypeName="Zayavka2Model.BlackList">
               <MappingFragment StoreEntitySet="BlackList">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -549,7 +549,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Client">
-            <EntityTypeMapping TypeName="ZayavkaModel.Client">
+            <EntityTypeMapping TypeName="Zayavka2Model.Client">
               <MappingFragment StoreEntitySet="Client">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="FName" ColumnName="FName" />
@@ -567,7 +567,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
-            <EntityTypeMapping TypeName="ZayavkaModel.Employee">
+            <EntityTypeMapping TypeName="Zayavka2Model.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="PodrazdelID" ColumnName="PodrazdelID" />
@@ -578,7 +578,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Podrazdel">
-            <EntityTypeMapping TypeName="ZayavkaModel.Podrazdel">
+            <EntityTypeMapping TypeName="Zayavka2Model.Podrazdel">
               <MappingFragment StoreEntitySet="Podrazdel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -586,7 +586,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="ZayavkaModel.Status">
+            <EntityTypeMapping TypeName="Zayavka2Model.Status">
               <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -594,7 +594,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeZayavka">
-            <EntityTypeMapping TypeName="ZayavkaModel.TypeZayavka">
+            <EntityTypeMapping TypeName="Zayavka2Model.TypeZayavka">
               <MappingFragment StoreEntitySet="TypeZayavka">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -602,7 +602,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="ZayavkaModel.User">
+            <EntityTypeMapping TypeName="Zayavka2Model.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
@@ -613,7 +613,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VisitPurpose">
-            <EntityTypeMapping TypeName="ZayavkaModel.VisitPurpose">
+            <EntityTypeMapping TypeName="Zayavka2Model.VisitPurpose">
               <MappingFragment StoreEntitySet="VisitPurpose">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -621,7 +621,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Zayavka">
-            <EntityTypeMapping TypeName="ZayavkaModel.Zayavka">
+            <EntityTypeMapping TypeName="Zayavka2Model.Zayavka">
               <MappingFragment StoreEntitySet="Zayavka">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="TypeZayavkaID" ColumnName="TypeZayavkaID" />
@@ -636,7 +636,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ZayavkaClient">
-            <EntityTypeMapping TypeName="ZayavkaModel.ZayavkaClient">
+            <EntityTypeMapping TypeName="Zayavka2Model.ZayavkaClient">
               <MappingFragment StoreEntitySet="ZayavkaClient">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ZayavkaID" ColumnName="ZayavkaID" />
@@ -661,7 +661,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

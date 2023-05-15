@@ -9,6 +9,6 @@ namespace DLPropyski.DBConnect
     class ConnectClass
     {
 
-        public static ZayavkaEntities db = new ZayavkaEntities();
+        public static Zayavka2Entities db = new Zayavka2Entities();
     }
 }

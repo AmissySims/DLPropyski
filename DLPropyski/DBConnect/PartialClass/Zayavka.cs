@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using DLPropyski.DBConnect;
+
 
 namespace DLPropyski.DBConnect
 {
@@ -31,7 +33,7 @@ namespace DLPropyski.DBConnect
             
             get
             {
-                Employee employee = DBConnect.ConnectClass.db.Employee.Where(x => x.id == PodrazdelEmplID).FirstOrDefault();
+                Employee employee = ConnectClass.db.Employee.Where(x => x.id == PodrazdelEmplID).FirstOrDefault();
                 return ("Сотрудник подразделения: " + employee.FName +" " + employee.Name +" " + employee.LName);
             }
         }
@@ -41,7 +43,6 @@ namespace DLPropyski.DBConnect
 
             get
             {
-
                 List<ZayavkaClient> cl = ConnectClass.db.ZayavkaClient.Where(x => x.ZayavkaID == id).ToList();
                 return cl.Count;
             }
@@ -51,17 +52,18 @@ namespace DLPropyski.DBConnect
         {
             get
             {
-                    if (StatusID == 3)
+                    if (StatusID == 1 || StatusID == 2 || StatusID == 4)
                     {
-                        return ("статус вашей заявки - " + Status.Name + ". Причина: " + ResultBecouse);
+                    return ("статус вашей заявки - " + Status.Name);
+                   
 
                     }
-                else
-                {
-                        return ("статус вашей заявки - " + Status.Name);
+                    else  
+                    {
+                         return ("статус вашей заявки - " + Status.Name + ". Причина: " + ResultBecouse);
 
-                }
-                       
+                    }
+                        
             }
         }
 
@@ -69,7 +71,7 @@ namespace DLPropyski.DBConnect
         {
             get
             {
-                if((DLPropyski.Classesss.UserClass.AuthUser.IsAdmin == true || StatusID == 1 )&& StatusID!= 4)
+                if(Classesss.UserClass.AuthUser.IsAdmin == true && (StatusID == 1 || StatusID == 2))
                 {
                     return Visibility.Visible;
                 }
@@ -84,7 +86,7 @@ namespace DLPropyski.DBConnect
         {
             get
             {
-                if (DLPropyski.Classesss.UserClass.AuthUser.IsAdmin == true && StatusID == 1 & StatusID!= 4)
+                if (Classesss.UserClass.AuthUser.IsAdmin == true && StatusID == 1 )
                 {
                     return Visibility.Visible;
                 }

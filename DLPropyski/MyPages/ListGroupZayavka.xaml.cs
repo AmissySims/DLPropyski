@@ -65,51 +65,51 @@ namespace DLPropyski.MyPages
 
         private void LichZayav_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MyPages.ListLichnZayavkaPage());
+            NavigationService.Navigate(new ListLichnZayavkaPage());
         }
 
         private void AddGroupZayavka_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MyPages.RealGroupPageAdd());
+            NavigationService.Navigate(new RealGroupPageAdd());
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             if(isAdmines == false)
             {
-                if(MessageBox.Show("Вы уверены, что желаете отменить эту заявку? Отменить нельзя","Уведомление",MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if(MessageBox.Show("Вы уверены, что желаете отменить эту заявку? ","Уведомление",MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Zayavka sel = (sender as Button).DataContext as Zayavka;
                     sel.StatusID = 4;
-                    DBConnect.ConnectClass.db.SaveChanges();
+                    ConnectClass.db.SaveChanges();
                     Up();
 
                 }
             }
             else
             {
-                if (MessageBox.Show("Вы уверены, что желаете отменить эту заявку? Отменить нельзя", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Вы уверены, что желаете отменить эту заявку?", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                    
                     Zayavka sel = (sender as Button).DataContext as Zayavka;
                     sel.StatusID = 3;
-                    DBConnect.ConnectClass.db.SaveChanges();
+                    ConnectClass.db.SaveChanges();
                     Up();
 
 
                     if (MessageBox.Show("Желаете ввести причина отклонения?", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        NavigationService.Navigate(new MyPages.PageOtlonssss(sel,2));
+                        NavigationService.Navigate(new PageOtlonssss(sel,2));
                     }
                     }
             }
         }
 
-        private void BtnYes_Click(object sender, RoutedEventArgs e)
+        private void BtnAccept_Click(object sender, RoutedEventArgs e)
         {
             Zayavka sel = (sender as Button).DataContext as Zayavka;
             sel.StatusID = 2;
-            DBConnect.ConnectClass.db.SaveChanges();
+            ConnectClass.db.SaveChanges();
             Up();
         }
     }

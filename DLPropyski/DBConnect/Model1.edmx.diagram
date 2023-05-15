@@ -4,26 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="340361f1867547a6a8ee2b54c4aa8edb" Name="Diagram1">
-        <EntityTypeShape EntityType="ZayavkaModel.BlackList" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZayavkaModel.Client" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZayavkaModel.Employee" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZayavkaModel.Podrazdel" Width="1.5" PointX="1.5" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZayavkaModel.Status" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZayavkaModel.TypeZayavka" Width="1.5" PointX="3.75" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZayavkaModel.User" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZayavkaModel.VisitPurpose" Width="1.5" PointX="3.75" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZayavkaModel.Zayavka" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZayavkaModel.ZayavkaClient" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
-        <AssociationConnector Association="ZayavkaModel.FK_BlackList_User" ManuallyRouted="false" />
-        <AssociationConnector Association="ZayavkaModel.FK_ZayavkaClient_Client" ManuallyRouted="false" />
-        <AssociationConnector Association="ZayavkaModel.FK_Employee_Podrazdel" ManuallyRouted="false" />
-        <AssociationConnector Association="ZayavkaModel.FK_Zayavka_Employee" ManuallyRouted="false" />
-        <AssociationConnector Association="ZayavkaModel.FK_Zayavka_Status" ManuallyRouted="false" />
-        <AssociationConnector Association="ZayavkaModel.FK_Zayavka_TypeZayavka" ManuallyRouted="false" />
-        <AssociationConnector Association="ZayavkaModel.FK_Zayavka_User" ManuallyRouted="false" />
-        <AssociationConnector Association="ZayavkaModel.FK_Zayavka_VisitPurpose" ManuallyRouted="false" />
-        <AssociationConnector Association="ZayavkaModel.FK_ZayavkaClient_Zayavka" ManuallyRouted="false" />
+      <Diagram DiagramId="2443705807f247a39ddce795038ad307" Name="Diagram1">
+        <EntityTypeShape EntityType="Zayavka2Model.BlackList" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Zayavka2Model.Client" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Zayavka2Model.Employee" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Zayavka2Model.Podrazdel" Width="1.5" PointX="1.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Zayavka2Model.Status" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Zayavka2Model.TypeZayavka" Width="1.5" PointX="3.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Zayavka2Model.User" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Zayavka2Model.VisitPurpose" Width="1.5" PointX="3.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Zayavka2Model.Zayavka" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Zayavka2Model.ZayavkaClient" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="Zayavka2Model.FK_BlackList_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Zayavka2Model.FK_ZayavkaClient_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="Zayavka2Model.FK_Employee_Podrazdel" ManuallyRouted="false" />
+        <AssociationConnector Association="Zayavka2Model.FK_Zayavka_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="Zayavka2Model.FK_Zayavka_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="Zayavka2Model.FK_Zayavka_TypeZayavka" ManuallyRouted="false" />
+        <AssociationConnector Association="Zayavka2Model.FK_Zayavka_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Zayavka2Model.FK_Zayavka_VisitPurpose" ManuallyRouted="false" />
+        <AssociationConnector Association="Zayavka2Model.FK_ZayavkaClient_Zayavka" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
