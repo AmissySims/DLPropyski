@@ -72,7 +72,7 @@ namespace DLPropyski.MyPages
                 }
                 else
                 {
-                    MessageBox.Show("Пароль должен соответствовать условиям \r\nМинимум 6 символов.\r\nМинимум 1 прописная буква.\r\nМинимум 1 цифра.\r\nМинимум один символ из набора: ! @ # $ % ^.\r\n", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Пароль должен соответствовать условиям \r\nМинимум 8 символов.\r\nМинимум 1 прописная буква.\r\nМинимум 1 цифра.\r\nМинимум один символ из набора: ! @ # $ % ^.\r\n", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             else
